@@ -35,12 +35,12 @@ public class NodeManager : MonoBehaviour
             }
         }
 
-        map[2, 4].property = nodeProp.START;
-        map[6, 4].property = nodeProp.GOAL;
+        map[MapX/2 - 2, MapY/2].property = nodeProp.START;
+        map[MapX/2 + 2, MapY / 2].property = nodeProp.GOAL;
 
-        map[4, 3].property = nodeProp.BLOCK;
-        map[4, 4].property = nodeProp.BLOCK;
-        map[4, 5].property = nodeProp.BLOCK;
+        map[MapX / 2, MapY / 2 -1].property = nodeProp.BLOCK;
+        map[MapX / 2, MapY / 2].property = nodeProp.BLOCK;
+        map[MapX / 2, MapY / 2 +1].property = nodeProp.BLOCK;
 
         star.init(ref map);
 

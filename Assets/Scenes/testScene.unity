@@ -255,8 +255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Node: {fileID: 5383148286999646970, guid: 3e71f62a0a2a6ae4b8d0421e642315e3, type: 3}
-  MapX: 10
-  MapY: 10
+  MapX: 20
+  MapY: 20
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

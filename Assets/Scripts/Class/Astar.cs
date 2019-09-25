@@ -6,8 +6,6 @@ public enum nodeDirection { UP_LEFT, UP, UP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, 
 // 노드 클래스
 public class Node : INode
 {
-    
-
     //생성할때 타일 속성과 위치 설정
     public Node(nodeProp property, int xPos, int yPos)
     {
@@ -59,9 +57,35 @@ public class Astar
                 goal = node;
         }
 
-        OpenList = new List<INode>();
-        CloseList = new List<INode>();
-        PathList = new List<INode>();
+        curTile = null;
+        isCalculating = false;
+
+        if(OpenList == null)
+        {
+            OpenList = new List<INode>();
+        }
+        else
+        {
+            OpenList.Clear();
+        }
+
+        if (CloseList == null)
+        {
+            CloseList = new List<INode>();
+        }
+        else
+        {
+            CloseList.Clear();
+        }
+
+        if (PathList == null)
+        {
+            PathList = new List<INode>();
+        }
+        else
+        {
+            PathList.Clear();
+        }
     }
 
     private INode[,] map;
@@ -70,7 +94,6 @@ public class Astar
     private INode start;
     private INode goal;
 
-
     //오픈 리스트
     private List<INode> OpenList;
     //클로즈 리스트
@@ -78,14 +101,24 @@ public class Astar
     //최종 경로
     private List<INode> PathList;
 
+    //지금 계산중인가?
+    public bool isCalculating;
+    //현재 탐색중인 타일 기록
+    private INode curTile;
+
     //경로 계산
     public bool calc()
     {
-        //현재 선택된 타일
-        INode curTile = start;
-        start.stat = nodeStat.CLOSE;
-        CloseList.Add(start);
+        //스탭 계산중이었으면 할 필요 없다.
+        if (!isCalculating)
+        {
+            //현재 선택된 타일
+            curTile = start;
+            start.stat = nodeStat.CLOSE;
+            CloseList.Add(start);
+        }
 
+        isCalculating = true;
         //주변을 돌려서 골에 도착하지 않으면 계속 루프를 돌림
         while (!searchAround(ref curTile))
         {
@@ -105,7 +138,49 @@ public class Astar
             tNode.stat = nodeStat.CLOSE;
             CloseList.Add(tNode);
         }
+        isCalculating = false;
         return true;
+    }
+
+    public INode stepCalc()
+    {
+        //스탭 계산중이었으면 할 필요 없다.
+        if (!isCalculating)
+        {
+            //현재 선택된 타일
+            curTile = start;
+            start.stat = nodeStat.CLOSE;
+            CloseList.Add(start);
+        }
+
+        if(!searchAround(ref curTile))
+        {
+            //오픈리스트에 타일이 없을때까지 경로를 못찾으면 실패
+            if (OpenList.Count == 0)
+            {
+                isCalculating = false;
+                return null;
+            }
+
+            //오픈리스트를 검색해 가장 F값이 낮은 노드를 클로즈 리스트로 옮기고 curTile로 지정
+            INode tNode = null;
+            foreach (INode node in OpenList)
+            {
+                if (tNode == null) tNode = node;
+                else if (tNode.F > node.F) tNode = node;
+            }
+            curTile = tNode;
+            OpenList.Remove(tNode);
+
+            tNode.stat = nodeStat.CLOSE;
+            CloseList.Add(tNode);
+        }
+        else
+        {
+            isCalculating = false;
+            return null;
+        }
+        return null;
     }
 
     //현재 지점에서 체크하는 지점의 G값을 계산

@@ -5,11 +5,40 @@ using UnityEngine;
 public class nodeBlock : MonoBehaviour, INode
 {
     public GameObject NodePanel;
+    public GameObject Model;
 
     private NodePanalController NPC;
 
     //노드 인터페이스 구현 부분
-    public nodeProp property { get; set; }
+    nodeProp _property;
+    public nodeProp property {
+        get { return _property; }
+        set {
+
+            switch (value)
+            {
+                case nodeProp.START:
+                    if(Model != null) DestroyImmediate(Model, true);
+                    Model = Instantiate(Resources.Load("Prefabs/StartCube") as GameObject, this.gameObject.transform);
+                    break;
+                case nodeProp.GOAL:
+                    if (Model != null) DestroyImmediate(Model, true);
+                    Model = Instantiate(Resources.Load("Prefabs/GoalCube") as GameObject, this.gameObject.transform);
+                    break;
+                case nodeProp.BLOCK:
+                    if (Model != null) DestroyImmediate(Model, true);
+                    Model = Instantiate(Resources.Load("Prefabs/WallCube") as GameObject, this.gameObject.transform);
+                    break;
+                case nodeProp.EMPTY:
+                    if (Model != null) DestroyImmediate(Model, true);
+                    Model = Instantiate(Resources.Load("Prefabs/NomalCube") as GameObject, this.gameObject.transform);
+                    break;
+            }
+            if (value == _property) return;
+
+            _property = value;
+        }
+    }
 
     private nodeStat currStat;
 
@@ -21,6 +50,26 @@ public class nodeBlock : MonoBehaviour, INode
         }
         set
         {
+            //if (value == nodeStat.ROAD) this.transform.GetChild(2).gameObject.SetActive(true);
+            //else this.transform.GetChild(2).gameObject.SetActive(false);
+            if(_property == nodeProp.START || _property == nodeProp.GOAL) { _stat = value; return; }
+            switch(value)
+            {
+                case nodeStat.ROAD:
+                    if (Model != null) DestroyImmediate(Model, true);
+                    Model = Instantiate(Resources.Load("Prefabs/RoadCube") as GameObject, this.gameObject.transform);
+                    break;
+                case nodeStat.OPEN:
+                    if (Model != null) DestroyImmediate(Model, true);
+                    Model = Instantiate(Resources.Load("Prefabs/OpenCube") as GameObject, this.gameObject.transform);
+                    break;
+                case nodeStat.CLOSE:
+                    if (Model != null) DestroyImmediate(Model, true);
+                    Model = Instantiate(Resources.Load("Prefabs/CloseCube") as GameObject, this.gameObject.transform);
+                    break;
+                case nodeStat.NULL:
+                    break;
+            }
             _stat = value;
         }
     }
@@ -93,12 +142,12 @@ public class nodeBlock : MonoBehaviour, INode
 
     void Update()
     {
-        if (currStat != stat)
-        {
-            currStat = stat;
-            if (stat == nodeStat.ROAD) this.transform.GetChild(2).gameObject.SetActive(true);
-            else this.transform.GetChild(2).gameObject.SetActive(false);
-        }
+        //if (currStat != stat)
+        //{
+        //    currStat = stat;
+        //    if (stat == nodeStat.ROAD) this.transform.GetChild(2).gameObject.SetActive(true);
+        //    else this.transform.GetChild(2).gameObject.SetActive(false);
+        //}
         
     }
 }
