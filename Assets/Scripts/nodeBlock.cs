@@ -14,7 +14,6 @@ public class nodeBlock : MonoBehaviour, INode
     public nodeProp property {
         get { return _property; }
         set {
-
             switch (value)
             {
                 case nodeProp.START:
@@ -133,6 +132,8 @@ public class nodeBlock : MonoBehaviour, INode
     {
         if (NodePanel == null) return;
         NPC = NodePanel.GetComponent<NodePanalController>();
+
+        this.property = nodeProp.EMPTY;
     }
 
     void Start()

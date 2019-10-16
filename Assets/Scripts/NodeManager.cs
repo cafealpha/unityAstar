@@ -29,7 +29,7 @@ public class NodeManager : MonoBehaviour
         {
             for (int j = 0; j < MapY; j++)
             {
-                GameObject node = Instantiate(Node, new Vector3(j * 10 - MapX/2*10, 0, i * 10 - MapX/2*10), Quaternion.identity);
+                GameObject node = Instantiate(Node, new Vector3(j * 10 - MapX/2*10, 0, i * 10 - MapY/2*10), Quaternion.identity);
                 map[j,i] = node.GetComponent<INode>();
                 map[j, i].init(nodeProp.EMPTY, j, i);
             }
@@ -60,11 +60,5 @@ public class NodeManager : MonoBehaviour
                 else Debug.Log("");
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
