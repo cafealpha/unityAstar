@@ -24,7 +24,7 @@ public class nodeBlock : MonoBehaviour, INode
                     if (Model != null) DestroyImmediate(Model, true);
                     Model = Instantiate(Resources.Load("Prefabs/GoalCube") as GameObject, this.gameObject.transform);
                     break;
-                case nodeProp.BLOCK:
+                case nodeProp.WALL:
                     if (Model != null) DestroyImmediate(Model, true);
                     Model = Instantiate(Resources.Load("Prefabs/WallCube") as GameObject, this.gameObject.transform);
                     break;

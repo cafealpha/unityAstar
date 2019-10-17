@@ -24,9 +24,9 @@ public class astarTest : MonoBehaviour
         map[2, 4].property = nodeProp.START;
         map[6, 4].property = nodeProp.GOAL;
 
-        map[4, 3].property = nodeProp.BLOCK;
-        map[4, 4].property = nodeProp.BLOCK;
-        map[4, 5].property = nodeProp.BLOCK;
+        map[4, 3].property = nodeProp.WALL;
+        map[4, 4].property = nodeProp.WALL;
+        map[4, 5].property = nodeProp.WALL;
 
         star.init(ref map);
 

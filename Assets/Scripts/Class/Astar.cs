@@ -242,7 +242,7 @@ public class Astar
                 if (CloseList.Contains(tile)) continue;
 
                 //벽이면 패스
-                if (tile.property == nodeProp.BLOCK) continue;
+                if (tile.property == nodeProp.WALL) continue;
 
                 //피해야 하는 블럭 판정
                 if (isCorner(curTile.xPos, curTile.yPos, dir)) continue;
@@ -295,7 +295,7 @@ public class Astar
         if (y < 0 || y > map.GetLength(1) - 1) return false;
 
         //벽이면 패스
-        if (node.property == nodeProp.BLOCK) return false;
+        if (node.property == nodeProp.WALL) return false;
 
         return true;
     }
@@ -318,36 +318,36 @@ public class Astar
                 {
                     //왼쪽 상단으로 넘어갈때
                     //바로 왼쪽이 벽
-                    if (map[curX - 1, curY].property == nodeProp.BLOCK) return true;
+                    if (map[curX - 1, curY].property == nodeProp.WALL) return true;
                     //바로 위쪽이 벽
-                    if (map[curX, curY - 1].property == nodeProp.BLOCK) return true;
+                    if (map[curX, curY - 1].property == nodeProp.WALL) return true;
                 }
                 break;
             case nodeDirection.UP_RIGHT:
                 {
                     //오른쪽 상단으로 넘어갈때
                     //바로 오른쪽이 벽
-                    if (map[curX + 1, curY].property == nodeProp.BLOCK) return true;
+                    if (map[curX + 1, curY].property == nodeProp.WALL) return true;
                     //바로 위쪽이 벽
-                    if (map[curX, curY - 1].property == nodeProp.BLOCK) return true;
+                    if (map[curX, curY - 1].property == nodeProp.WALL) return true;
                 }
                 break;
             case nodeDirection.BOTTOM_LEFT:
                 {
                     //좌측하단으로 넘어갈때
                     //바로 왼쪽이 벽
-                    if (map[curX - 1, curY].property == nodeProp.BLOCK) return true;
+                    if (map[curX - 1, curY].property == nodeProp.WALL) return true;
                     //바로 아래쪽이 벽
-                    if (map[curX, curY + 1].property == nodeProp.BLOCK) return true;
+                    if (map[curX, curY + 1].property == nodeProp.WALL) return true;
                 }
                 break;
             case nodeDirection.BOTTOM_RIGHT:
                 {
                     //우측하단으로 넘어갈때
                     //바로 오른쪽이 벽
-                    if (map[curX + 1, curY].property == nodeProp.BLOCK) return true;
+                    if (map[curX + 1, curY].property == nodeProp.WALL) return true;
                     //바로 아래쪽이 벽
-                    if (map[curX, curY + 1].property == nodeProp.BLOCK) return true;
+                    if (map[curX, curY + 1].property == nodeProp.WALL) return true;
                 }
                 break;
         }

@@ -18,7 +18,7 @@ public class BaseUIController : MonoBehaviour
     public Button m_BtSave;
     //나가기
     public Button m_BtExit;
-
+    
     void Start()
     {
         m_BtNewMap.onClick.AddListener(openSetMapMenu);

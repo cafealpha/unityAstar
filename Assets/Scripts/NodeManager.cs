@@ -38,9 +38,9 @@ public class NodeManager : MonoBehaviour
         map[MapX/2 - 2, MapY/2].property = nodeProp.START;
         map[MapX/2 + 2, MapY / 2].property = nodeProp.GOAL;
 
-        map[MapX / 2, MapY / 2 -1].property = nodeProp.BLOCK;
-        map[MapX / 2, MapY / 2].property = nodeProp.BLOCK;
-        map[MapX / 2, MapY / 2 +1].property = nodeProp.BLOCK;
+        map[MapX / 2, MapY / 2 -1].property = nodeProp.WALL;
+        map[MapX / 2, MapY / 2].property = nodeProp.WALL;
+        map[MapX / 2, MapY / 2 +1].property = nodeProp.WALL;
 
         star.init(ref map);
 

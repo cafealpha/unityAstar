@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum nodeProp { EMPTY, BLOCK, START, GOAL, NULL };
+public enum nodeProp { EMPTY, WALL, START, GOAL, NULL };
 public enum nodeStat { OPEN, CLOSE, ROAD, NULL};
 
 public interface INode

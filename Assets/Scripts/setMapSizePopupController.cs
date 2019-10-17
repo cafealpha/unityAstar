@@ -18,8 +18,17 @@ public class setMapSizePopupController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_btOK.onClick.AddListener(destroyDialog);
+        m_btOK.onClick.AddListener(makeMap);
         m_btCancel.onClick.AddListener(destroyDialog);
+    }
+
+    void makeMap()
+    {
+        EblockItem EI = new EblockItem(int.Parse(m_IFxPos.text), int.Parse(m_IFyPos.text));
+        MapLoader ML = GameObject.Find("MapCreator").GetComponent<MapLoader>();
+        ML.setData(EI);
+        ML.loadMap();
+        destroyDialog();
     }
 
     void destroyDialog()

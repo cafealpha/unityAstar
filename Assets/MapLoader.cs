@@ -26,7 +26,7 @@ public class MapLoader : MonoBehaviour
         {
             for (int j = 0; j < mapData.m_iMapY; j++)
             {
-                GameObject tObj = Instantiate(obj, new Vector3(j - blockSizeX / 2, i - blockSizeY / 2, 0), Quaternion.identity, this.gameObject.transform);
+                GameObject tObj = Instantiate(obj, new Vector3(j - mapData.m_iMapX/2 - blockSizeX / 2, i - mapData.m_iMapY/2 - blockSizeY / 2, 0), Quaternion.identity, this.gameObject.transform);
                 tObj.GetComponent<EBlockController>().block = mapData.getItem(j, i);
                 blockList.Add(tObj);
             }
@@ -37,10 +37,6 @@ public class MapLoader : MonoBehaviour
     void Start()
     {
         blockList = new List<GameObject>();
-        EblockItem test = new EblockItem(10, 10);
-        setData(test);
-
-        loadMap();
     }
 
     // Update is called once per frame
