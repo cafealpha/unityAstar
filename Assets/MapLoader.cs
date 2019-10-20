@@ -22,9 +22,9 @@ public class MapLoader : MonoBehaviour
     {
         if (mapData == null) return;
 
-        for (int i = 0; i < mapData.m_iMapX; i++)
+        for (int i = 0; i < mapData.m_iMapY; i++)
         {
-            for (int j = 0; j < mapData.m_iMapY; j++)
+            for (int j = 0; j < mapData.m_iMapX; j++)
             {
                 GameObject tObj = Instantiate(obj, new Vector3(j - mapData.m_iMapX/2 - blockSizeX / 2, i - mapData.m_iMapY/2 - blockSizeY / 2, 0), Quaternion.identity, this.gameObject.transform);
                 tObj.GetComponent<EBlockController>().block = mapData.getItem(j, i);

@@ -8,7 +8,7 @@ public class rayController : MonoBehaviour
     // Start is called before the first frame update
 
     Camera MainCamera;
-
+    
     void Start()
     {
         MainCamera = this.GetComponent<Camera>();
@@ -46,12 +46,13 @@ public class rayController : MonoBehaviour
                 switch(Button)
                 {
                     case 0:
+                        ec.setProperty(EditorManager.Instance.currentCursor);
                         ec.getBlockInfo();
-                        ec.setProperty(nodeProp.WALL);
                         break;
                     case 1:
                     case 2:
                         ec.setProperty(nodeProp.EMPTY);
+                        ec.getBlockInfo();
                         break;
                 }
             }

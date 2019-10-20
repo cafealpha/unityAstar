@@ -209,7 +209,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &250519330
 GameObject:
@@ -239,7 +239,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855319566
 GameObject:
@@ -305,7 +305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109734336
 GameObject:
@@ -403,6 +403,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb17b7a078a90734fa7a3f1cb0958742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2040654430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040654432}
+  - component: {fileID: 2040654431}
+  m_Layer: 0
+  m_Name: EditorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2040654431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040654430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4824d0572e0e40e47b7c569109bcc81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCursor: 0
+--- !u!4 &2040654432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040654430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 612.1221, y: 368.85092, z: 27.266571}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2081512464
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2081512466
 MonoBehaviour:
@@ -529,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 233971229368746840, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 233971229368746840, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
@@ -549,32 +593,32 @@ PrefabInstance:
     - target: {fileID: 233971228201255818, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
       propertyPath: m_Name
-      value: Start
+      value: StartButton
       objectReference: {fileID: 0}
     - target: {fileID: 233971228689113739, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
       propertyPath: m_Name
-      value: Target
+      value: GoalButton
       objectReference: {fileID: 0}
     - target: {fileID: 233971228880533617, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
       propertyPath: m_Name
-      value: Wall
+      value: WallButton
       objectReference: {fileID: 0}
     - target: {fileID: 233971228482777863, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
       propertyPath: m_Name
-      value: NewMap
+      value: NewMapButton
       objectReference: {fileID: 0}
     - target: {fileID: 233971228301373337, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
       propertyPath: m_Name
-      value: Save
+      value: SaveButton
       objectReference: {fileID: 0}
     - target: {fileID: 233971227770931421, guid: a2e7c8222e21e054eb983a7b1ae48631,
         type: 3}
       propertyPath: m_Name
-      value: Exit
+      value: ExitButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e7c8222e21e054eb983a7b1ae48631, type: 3}

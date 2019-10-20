@@ -7,9 +7,7 @@ using UnityEngine.EventSystems;
 public class EBlockController : MonoBehaviour {
 
     public EBlock block;
-    public nodeProp property { get; set; }
     private MeshRenderer mr;
-    private Material mat;
 
     public Texture m_tNormal;
     public Texture m_tStart;
@@ -35,15 +33,15 @@ public class EBlockController : MonoBehaviour {
 
     public void setProperty(nodeProp prop)
     {
-        if (property == prop) return;
-        property = prop;
+        if (block.property == prop) return;
+        block.property = prop;
         invoke();
     }
 
     //상태 갱신
     public void invoke()
     {
-        switch (property)
+        switch (block.property)
         {
             case nodeProp.EMPTY:
                 mr.material.mainTexture = m_tNormal;
