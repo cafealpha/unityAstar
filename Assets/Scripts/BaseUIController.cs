@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BaseUIController : MonoBehaviour
 {
+    public GameObject testData;
+
     // Start is called before the first frame update
     //시작버튼
     public Button m_BtStart;
@@ -14,6 +16,8 @@ public class BaseUIController : MonoBehaviour
     public Button m_BtWall;
     //새 맵 생성
     public Button m_BtNewMap;
+    //불러오기
+    public Button m_BtLoad;
     //저장
     public Button m_BtSave;
     //나가기
@@ -27,7 +31,8 @@ public class BaseUIController : MonoBehaviour
         m_BtWall.onClick.AddListener(wallButtonClick);
 
         m_BtNewMap.onClick.AddListener(openSetMapMenu);
-        
+
+        m_BtLoad.onClick.AddListener(loadButtonClick);
         m_BtSave.onClick.AddListener(saveButtonClick);
         m_BtExit.onClick.AddListener(exitButtonClick);
 
@@ -58,9 +63,19 @@ public class BaseUIController : MonoBehaviour
     {
         EditorManager.Instance.currentCursor = nodeProp.WALL;
     }
+    void loadButtonClick()
+    {
+        print("로드버튼");
+        EblockItem ei = ManageData.loadData("");
+        MapLoader ML = GameObject.Find("MapCreator").GetComponent<MapLoader>();
+        ML.destroyCurrentMap();
+        ML.setData(ei);
+        ML.loadMap();
+    }
 
     void saveButtonClick()
     {
+        ManageData.saveData(testData.GetComponent<MapLoader>().mapData);
         print("세이브버튼");
     }
     void exitButtonClick()

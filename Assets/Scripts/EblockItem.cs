@@ -23,7 +23,7 @@ public class EblockItem
         init(x, y, mapName);
     }
 
-    void init(int x, int y, string mapName)
+    public void init(int x, int y, string mapName)
     {
         m_sMapName = mapName;
 
@@ -42,6 +42,11 @@ public class EblockItem
     }
 
     public EBlock getItem(int xPos, int yPos) { return map[xPos, yPos]; }
+
+    public void setItem(int xPos, int yPos, nodeProp prop)
+    {
+        map[xPos, yPos].property = prop;
+    }
 
     public void saveData()
     {

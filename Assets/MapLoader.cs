@@ -33,15 +33,22 @@ public class MapLoader : MonoBehaviour
         }
     }
 
+    public void destroyCurrentMap()
+    {
+        while(blockList.Count != 0)
+        {
+            GameObject temp = blockList[0];
+            blockList.RemoveAt(0);
+            Destroy(temp);
+        }
+
+        mapData = null;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         blockList = new List<GameObject>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

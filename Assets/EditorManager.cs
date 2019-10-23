@@ -5,5 +5,6 @@ using UnityEngine;
 public class EditorManager : Singleton<EditorManager>
 {
     public nodeProp currentCursor = nodeProp.EMPTY;
+    public EblockItem currentMap;
 
 }
